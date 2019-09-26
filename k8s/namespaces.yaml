@@ -1,0 +1,32 @@
+#{
+#  "kind": "Namespace",
+#  "apiVersion": "v1",
+#  "metadata": {
+#    "name": "dev",
+#    "labels": {
+#      "name": "dev"
+#    }
+#  }
+#}
+
+{
+  "kind": "Namespace",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "qa",
+    "labels": {
+      "name": "qa"
+    }
+  }
+}
+
+#{
+#  "kind": "Namespace",
+#  "apiVersion": "v1",
+#  "metadata": {
+#    "name": "uat",
+#    "labels": {
+#      "name": "uat"
+#    }
+#  }
+#}

@@ -1,0 +1,44 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodeservice
+spec:
+  selector:
+    matchLabels:
+      name: nodeservice
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: nodeservice
+    spec:
+      containers:
+      - name: nodeservice
+        image: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            memory: "300Mi"
+            cpu: "75m"
+          limits:
+            memory: "400Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-node
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 80
+      protocol: TCP
+  # label keys and values that must match in order to receive traffic for this service
+  selector:
+    name: nodeservice
+  type: LoadBalancer
